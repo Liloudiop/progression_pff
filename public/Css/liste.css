@@ -13,6 +13,8 @@ h2 {
 
 table {
     /* background-color: #fff; */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
     position: relative;
     z-index: 1;
     left: 50%;
@@ -60,10 +62,11 @@ li {
 
 }
 
+
 li a {
     color: #fff;
     padding: 16px ;
-    background-color: rgb(46, 63, 164);
+    background-color: rgb(138, 46, 164);
     border-radius: 12px;
     text-decoration: none;
 

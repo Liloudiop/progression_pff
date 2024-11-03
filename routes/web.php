@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('acceuil');
 });
 
 
@@ -33,8 +33,8 @@ Route::get('/', function () {
 
 
 Route::get('filieres.liste',"App\Http\Controllers\FiliereController@index")->name('filiere.liste');
-Route::get('create',"App\Http\Controllers\FiliereController@create")->name('filiere.create');
-Route::post('/filieres.store', "App\Http\Controllers\FiliereController@store")->name('filieres.store');
+Route::get('create',"App\Http\Controllers\FiliereController@create")->name('filieres.create');
+Route::post('/filieres.store1', "App\Http\Controllers\FiliereController@store")->name('filieres.store1');
 Route::get('filiere/edit/{id}', "App\Http\Controllers\FiliereController@edit")->name('filieres.edit');
 Route::patch('filiere/edit/traitement', "App\Http\Controllers\FiliereController@editTraitement")->name('filieres.editTraitement');
 Route::delete('/filiere/delete/{id}', "App\Http\Controllers\FiliereController@delete")->name('filieres.delete');
@@ -206,3 +206,14 @@ Route::get('planning/edit/{id}', "App\Http\Controllers\PlanningController@edit")
 Route::patch('planning/edit/traitement', "App\Http\Controllers\PlanningController@editTraitement")->name('planning.editTraitement');
 Route::delete('/planning/delete/{id}', "App\Http\Controllers\PlanningController@delete")->name('planning.delete');
 Route::get('planning_search', "App\Http\Controllers\PlanningController@search")->name('planning.search');
+
+
+
+
+
+Route::get('semestres.liste',"App\Http\Controllers\SemestreController@index")->name('semestres.liste');
+Route::get('semestres.create',"App\Http\Controllers\SemestreController@create")->name('semestres.create');
+Route::post('/semestres.store', "App\Http\Controllers\SemestreController@store")->name('semestres.store');
+Route::get('semestres/edit/{id}', "App\Http\Controllers\SemestreController@edit")->name('semestres.edit');
+Route::patch('semestres/edit/traitement', "App\Http\Controllers\SemestreController@editTraitement")->name('semestres.editTraitement');
+Route::delete('semestres/delete/{id}', "App\Http\Controllers\SemestreController@delete")->name('semestres.delete');

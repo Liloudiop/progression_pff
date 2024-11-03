@@ -7,7 +7,7 @@
 
     <form action="{{route('planning.store')}}" method="post">
         @csrf
-    <h4>Ajouter Cours</h4>
+    <h4>Ajouter un planning</h4>
         <hr>
 
         <label for="nom">Nom Planning</label>
@@ -39,5 +39,5 @@
         <input type="submit" value="Valider">
 
         {{-- <p class="p">Vous avez deja un compte ? <a href="/pages/login">se connecter</a></p> --}}
-        <p class="p">Merci de remplir tous les champs  pour ajouter <br><span>un cours.</span> </p>
+        <p class="p">Merci de remplir tous les champs  pour ajouter <span>une planning.</span> </p>
     </form>

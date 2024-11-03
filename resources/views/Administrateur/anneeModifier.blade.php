@@ -4,7 +4,7 @@
 
     <title> Systeme de Gestion Scolaire</title>
       <form action="{{route('annees.editTraitement')}}" method="post">
-         <h4>Modifier Annee</h4>
+         <h4>Modifier L'annèe</h4>
 
         {!! csrf_field() !!}
         @method("PATCH")
@@ -20,7 +20,7 @@
         <input type="date" name="date_fin" id="date_fin" value="{{$annee->date_fin}}" required>
 
         <input type="submit" value="Valider" >
-        <p class="p">Merci d'apporter des modifications pour cette <br><span>annee.</span> </p>
+        <p class="p">Merci d'apporter des modifications pour cette <span>annee.</span> </p>
 
     </form>
     

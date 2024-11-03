@@ -32,7 +32,7 @@
        </select>
 
         <input type="submit" value="Valider" >
-        <p class="p">Merci d'apporter des modifications pour cette <br><span>salle.</span> </p>
+        <p class="p">Merci d'apporter des modifications pour cette <span>salle.</span> </p>
 
     </form>
     

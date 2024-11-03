@@ -15,11 +15,12 @@
         <input type="text" name="nom_complet" id="nom_complet" required> 
 
 
-        <label for="specialite">Specialite *</label><br>
-        <input type="text" name="specialite" id="specialite" required>
-  
+
         <label for="date_naissance">Date de naissance *</label><br>
         <input type="date" name="date_naissance" id="date_naissance" required>
+
+        <label for="rib">RIB *</label><br>
+        <input type="text" name="rib" id="rib" maxlength="24" placeholder="code banque{5}, code agence {5}, numero compte {12}, cle {2}"  required >
   
       
   
@@ -48,7 +49,7 @@
           <div class="box">
             
             <label for="cni">CNI *</label><br>
-          <input type="text" name="cni" id="cni" required min="12">
+            <input type="text" name="cni" maxlength="13" id="cni" required >
           </div>
         </div>
   
@@ -59,9 +60,11 @@
             <input type="text" name="banque" id="banque" required>
           </div> 
           <div class="box">
+
+            <label for="specialite">Specialite *</label><br>
+            <input type="text" name="specialite" id="specialite" required>
+      
             
-            <label for="rib">RIB *</label><br>
-            <input type="text" name="rib" id="rib" required>
           </div> 
         </div>
         
@@ -72,3 +75,22 @@
         {{-- <p class="p">Vous avez deja un compte ? <a href="/pages/login">se connecter</a></p> --}}
         <p style="text-align: center" class="p">Merci de remplir tous les champs  pour ajouter un formateur. </p>
     </form>
+
+{{-- 
+    <script>
+      function validateNumberLength() {
+        const phoneInput = document.getElementById("cni");
+        const maxLength = 13;
+
+        console.log(phoneInput);
+        
+        
+        if (phoneInput.value.length < maxLength) {
+          alert("Le numéro du carte d'identite doit composè de 13 chiffres.");
+          return false;
+        }
+        return true;
+      }
+
+      validateNumberLength();
+      </script> --}}

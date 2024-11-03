@@ -48,11 +48,11 @@
             <td>{{ $supports->nom_support}}</td>
             <td>{{ $supports->files }}</td>
             <td>{{ $supports->filiere_name }}</td>
-            <td>{{ $supports->created_at }}</td>
+            <td>{{ \Carbon\Carbon::parse($supports->created_at)->translatedFormat('d F Y') }}</td>
             
 
 
-            <td><a href="#"><button class="modifier">Telecharger </button></a></td>
+            <td><a href="#"><button class="telecharger" style="cursor: pointer" title="telecharger"><img width="20px" src="/icone/download.svg" alt="telecharger"></button></a></td>
 
 
             

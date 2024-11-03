@@ -27,8 +27,8 @@
                     <li><a href="{{route('annees.liste')}}">Annees</a></li>
                     <li><a href="{{route('sallesNew.liste')}}">Salle</a></li>
                     <li><a href="{{route('pffNew.liste')}}">PFF</a></li>
-                    <li><a href="{{route('apprenantImg.create')}}">PP</a></li>
-                    <li><a href="#">Major</a></li>
+                    <li><a href="{{route('planning.liste')}}">Planning</a></li>
+                    <li><a href="{{route('semestres.liste')}}">Semestre</a></li>
                 </ul>
             </nav>
         </div>

@@ -5,13 +5,21 @@
     <title> Systeme de Gestion Scolaire</title>
 
 
-    <form action="{{route('annees.store')}}" method="post">
+    <form action="{{route('semestres.store')}}" method="post">
         @csrf
-    <h4>Ajouter Année</h4>
+    <h4>Ajouter Semestre</h4>
         <hr>
 
-        <label for="nom">Nom Promotion</label>
+        <label for="nom">Nom Semestre</label>
         <input type="text" name="nom" id="nom" required> 
+
+        <label for="annee_id">Promotion</label>
+        <select name="annee_id" >
+            @foreach ($annee as $annee)
+                <option value="{{$annee->id}}" >{{$annee->nom_promotion}}</option>
+            @endforeach
+
+        </select>
 
         <label for="date_debut">Date Debut</label>
         <input type="date" name="date_debut" id="date_debut" required>
@@ -23,5 +31,5 @@
         <input type="submit" value="Valider">
 
         {{-- <p class="p">Vous avez deja un compte ? <a href="/pages/login">se connecter</a></p> --}}
-        <p class="p">Merci de remplir tous les champs  pour ajouter <span>une année.</span> </p>
+        <p class="p">Merci de remplir tous les champs  pour ajouter <span>une semestre.</span> </p>
     </form>

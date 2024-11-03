@@ -5,7 +5,7 @@
     <title> Systeme de Gestion Scolaire</title>
 
       <form action="{{route('pffNew.editTraitement')}}" method="post">
-         <h4>Modifier Le projet PPF</h4>
+         <h4>Modifier Le projet PFF</h4> <hr>
 
         {!! csrf_field() !!}
         @method("PATCH")
@@ -42,7 +42,7 @@
         
 
         <input type="submit" value="Valider" >
-        <p class="p">Merci d'apporter des modifications pour cette <br><span>pff.</span> </p>
+        <p class="p">Merci d'apporter des modifications pour cette <span>pff.</span> </p>
 
     </form>
     

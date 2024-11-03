@@ -18,4 +18,9 @@ class Annee extends Model
     {
         return $this->hasMany(Planning::class);
     }
+
+    public function Semestre()
+    {
+        return $this->hasMany(Semestre::class);
+    }
 }

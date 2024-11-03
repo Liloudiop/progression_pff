@@ -27,7 +27,7 @@
             <td>{{ $planning->departement }}</td>
 
 
-            <td><a href="/planning/edit/{{($planning->id)}}"><button class="modifier">Telecharger</button></a></td>
+            <td><a href="#"><button class="telecharger" style="cursor: pointer" title="telecharger"><img width="20px" src="/icone/download.svg" alt="telecharger"></button></a></td>
 
           
 

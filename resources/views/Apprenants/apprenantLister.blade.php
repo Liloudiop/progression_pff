@@ -5,6 +5,15 @@
     <title> Systeme de Gestion Scolaire</title>
 
 
+    <style>
+        /* Styles pour l'impression */
+        @media print {
+            .no-print  {
+                display: none;
+            }
+           
+        }
+    </style>
 
 
 {{-- @extends('layout') --}}
@@ -12,11 +21,13 @@
     {{-- @section('content') --}}
         <div class="container">
 
-    <h2>Voici la liste des Apprenants</h2>
+    <h2 class="no-print">Voici la liste des Apprenants</h2>
     <ul>
         
-        <li ><a href="/" class="lien_site">Retourner sur le site</a></li>
-        <li><a href="{{route('apprenant.create')}}">Ajouter un Apprenant</a></li>
+        <li  class="no-print"><a href="/" class="lien_site">Retourner sur le site </a></li>
+        <li class="no-print"><a href="{{route('apprenant.create')}}">Ajouter un Apprenant</a></li>
+        <li class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer </a></li>
+
     </ul>
 </div>
 
@@ -27,7 +38,7 @@
         <th>Etat</th>
         <th>Email</th>
         <th>Numero</th>
-        <th colspan="4">Action</th>
+        <th class="no-print" colspan="4">Action</th>
     </thead>
     <tbody>
         @if($apprenant->count()>0)
@@ -41,9 +52,9 @@
             <td>{{ $apprenants->numero1 }}</td>
 
 
-            <td><a href="/apprenant/show/{{($apprenants->id)}}"><button class="voir plus">Voir plus</button></a></td>
-            <td><a href="/apprenant/edit/{{($apprenants->id)}}"><button class="modifier">Modifier</button></a></td>
-            <td><a href="/apprenant.profile/{{($apprenants->id)}}"><button class="modifier">Voir profile</button></a></td>
+            <td class="no-print"><a href="/apprenant/show/{{($apprenants->id)}}" title="voir plus"><img width="20px" src="/icone/list.svg" alt="voir plus"></a></td>
+            <td class="no-print"><a href="/apprenant/edit/{{($apprenants->id)}}" title="modifier"><img width="20px" src="/icone/edit.svg" alt="modifier"></a></td>
+            <td class="no-print"><a href="/apprenant.profile/{{($apprenants->id)}}" title="voir profil"><img width="20px" src="/icone/eyes1.svg" alt="voir plus"></a></td>
             
             
             {{-- <td><a href="/apprenantImg.image/{{($apprenants->id)}}"><button class="modifier">PP</button></a></td> --}}
@@ -51,7 +62,7 @@
             <form action="/apprenant/delete/{{($apprenants->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <td><button class="supprimer" onclick="return confirm('Etes vous sur de vouloir supprimer l\'apprenant')">Supprimer</button></td>
+                <td  class="no-print" style="cursor: pointer;" title="supprimer"><img width="20px" src="/icone/delete1.png" alt="supprimer"  onclick="return confirm('Etes vous sur de vouloir supprimer l\'apprenant')"></td>
             </form>
             
 
@@ -67,3 +78,12 @@
 </table>
 
     {{-- @endsection --}}
+
+
+
+
+<script>
+    function imprimerPage() {
+        window.print();
+    }
+</script>

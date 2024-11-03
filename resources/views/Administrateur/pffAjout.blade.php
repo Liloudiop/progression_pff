@@ -41,5 +41,5 @@
         </select>
        
         <input type="submit" value="Valider">
-        <p class="p">Merci de remplir tous les champs  pour archivrer <br><span>une theme pff.</span> </p>
+        <p class="p">Merci de remplir tous les champs  pour archivrer <span>une theme pff.</span> </p>
     </form>

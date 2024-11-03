@@ -52,8 +52,10 @@ class PlanningController extends Controller
 
     public function edit($id)
     {
-        $annee = Planning::find($id);
-        return view('Administrateur.planningModifier',['plannings' => $plannings]);
+        $annees =  Annee::all();
+        $plannings = Planning::find($id);
+        // dd($plannings);
+        return view('Administrateur.planningModifier',['plannings' => $plannings, 'annee' => $annees]);
     }
 
     

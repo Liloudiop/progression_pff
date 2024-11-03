@@ -20,7 +20,8 @@
                 <tr>
                     <td>{{ $documentations->Nom}}</td>
                     <td style="cursor: pointer">{{ $documentations->lien }}</td>
-                    <td>{{ $documentations->created_at }}</td>
+                    <td>{{ \Carbon\Carbon::parse($documentations->created_at)->translatedFormat('d F Y') }}</td>
+
                     
         
         

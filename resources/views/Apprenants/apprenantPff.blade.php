@@ -33,7 +33,7 @@
                 {{-- @foreach ($fichier as $fichier)
                 <a href="{{ route('telecharger', ['id' => $fichier->id]) }}">Télécharger {{ $fichier->files }}</a>
                 @endforeach --}}
-                <td><a href="{{ $pff->files }}" download="telecharger"><button class="modifier">telecharger</button></a></td>
+                <td><a href="{{ $pff->files }}" download="telecharger"><button class="telecharger" style="cursor: pointer" title="telecharger"><img width="20px" src="/icone/download.svg" alt="telecharger"></button></a></td>
                 
                 
                 

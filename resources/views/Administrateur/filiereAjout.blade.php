@@ -5,7 +5,7 @@
     <title> Systeme de Gestion Scolaire</title>
 
 
-    <form action="{{route('filieres.store')}}" method="post">
+    <form action="/filieres.store1" method="post">
         @csrf
     <h4>Ajouter Filiere</h4>
         <hr>
