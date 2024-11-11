@@ -25,5 +25,5 @@
         <input type="submit" value="Valider">
 
         {{-- <p class="p">Vous avez deja un compte ? <a href="/pages/login">se connecter</a></p> --}}
-        <p class="p">Merci de remplir tous les champs  pour ajouter <br><span>un filiere.</span> </p>
+        <p class="p">Merci de remplir tous les champs  pour ajouter <span>un filiere.</span> </p>
     </form>

@@ -75,4 +75,18 @@ class AnneeController extends Controller
             return redirect("/annees.liste");
     
         }
+
+        public function search(Request $request) {
+            $search = $request->search;
+    
+            $annee = Annee::where(function($query) use ($search){
+                $query->where('nom_promotion', 'like' ,"%$search%")
+                ->orwhere('date_debut', 'like' ,"%$search%")
+                ->orwhere('date_fin', 'like' ,"%$search%");
+            })->get();
+
+            
+    
+            return view('Administrateur.anneeSearch', compact('annee', 'search'));
+        }
 }

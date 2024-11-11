@@ -23,6 +23,10 @@
         <li class="no-print" ><a href="{{route('semestres.create')}}">Ajouter une Semestre</a></li>
         <li class="no-print"   class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li>
 
+        <form class="no-print" action="{{route('semestres.search')}}" method="get">
+            <input type="search" name="search" id="search" class="search" placeholder="rechercher une semestre" value="{{isset($search) ? $search : ''}}">
+            <button  class="no-print" type="submit" id="btnsearch">Rechercher</button>
+        </form>
     </ul>
 </div>
 

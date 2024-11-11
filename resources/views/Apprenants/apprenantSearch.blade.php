@@ -21,7 +21,7 @@
     {{-- @section('content') --}}
         <div class="container">
 
-    <h2 class="no-print">Voici la liste des Apprenants</h2>
+    <h2 class="no-print">Voici la resultat du recherche</h2>
     <ul>
         
         <li  class="no-print"><a href="/" class="lien_site">Retourner sur le site </a></li>

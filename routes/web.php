@@ -49,6 +49,9 @@ Route::get('apprenant.create',"App\Http\Controllers\ApprenantController@create")
 Route::post('/apprenant.store', "App\Http\Controllers\ApprenantController@store")->name('apprenant.store');
 Route::get('apprenant/edit/{id}', "App\Http\Controllers\ApprenantController@edit")->name('apprenant.edit');
 Route::get('apprenant/show/{id}', "App\Http\Controllers\ApprenantController@show")->name('apprenant.show');
+Route::get('apprenant_search', "App\Http\Controllers\ApprenantController@search")->name('apprenant.search');
+
+
 
 Route::patch('apprenant/edit/traitement', "App\Http\Controllers\ApprenantController@editTraitement")->name('apprenant.editTraitement');
 Route::delete('apprenant/delete/{id}', "App\Http\Controllers\ApprenantController@delete")->name('apprenant.delete');
@@ -82,6 +85,8 @@ Route::post('/annees.store', "App\Http\Controllers\AnneeController@store")->name
 Route::get('annee/edit/{id}', "App\Http\Controllers\AnneeController@edit")->name('annees.edit');
 Route::patch('annee/edit/traitement', "App\Http\Controllers\AnneeController@editTraitement")->name('annees.editTraitement');
 Route::delete('annee/delete/{id}', "App\Http\Controllers\AnneeController@delete")->name('annees.delete');
+Route::get('annees_search', "App\Http\Controllers\AnneeController@search")->name('annees.search');
+
 
 
 
@@ -118,14 +123,19 @@ Route::get('formateurNew_search', "App\Http\Controllers\FormateurController@sear
 
 Route::get('formateursNew_profile/{id}', "App\Http\Controllers\FormateurController@profilNew")->name('formateursNew_profile');
 Route::get('formateurNew.planning', "App\Http\Controllers\FormateurController@Planning")->name('formateurNew.planning');
-Route::get('formateurNew.note', "App\Http\Controllers\FormateurController@note")->name('formateurNew.note');
 Route::get('formateurNew.cours', "App\Http\Controllers\FormateurController@cours")->name('formateurNew.cours');
 Route::get('formateurNew.statistique', "App\Http\Controllers\FormateurController@statistique")->name('formateurNew.statistique');
 Route::get('formateurNew.doc', "App\Http\Controllers\FormateurController@documentation")->name('formateurNew.doc');
 Route::get('formateurNew.cahier', "App\Http\Controllers\FormateurController@cahierDeCharge")->name('formateurNew.cahier');
 Route::get('formateurNew.settings', "App\Http\Controllers\FormateurController@settings")->name('formateurNew.settings');
 Route::get('formateurNew.community', "App\Http\Controllers\FormateurController@community")->name('formateurNew.community');
+Route::get('formateurNew.note', "App\Http\Controllers\FormateurController@note")->name('formateurNew.note');
 Route::get('formateurNew.eleve', "App\Http\Controllers\FormateurController@listEleve")->name('formateurNew.eleve');
+Route::get('formateurNew.classeSearch', "App\Http\Controllers\FormateurController@searchClasse")->name('formateurNew.classeSearch');
+Route::get('formateurNew.searchNote', "App\Http\Controllers\FormateurController@searchNote")->name('formateurNew.searchNote');
+Route::get('formateurNew.noteApprenant/{filiere}', "App\Http\Controllers\FormateurController@noteEleveshow")->name('formateurNew.noteApprenant');
+
+
 
 
 
@@ -217,3 +227,16 @@ Route::post('/semestres.store', "App\Http\Controllers\SemestreController@store")
 Route::get('semestres/edit/{id}', "App\Http\Controllers\SemestreController@edit")->name('semestres.edit');
 Route::patch('semestres/edit/traitement', "App\Http\Controllers\SemestreController@editTraitement")->name('semestres.editTraitement');
 Route::delete('semestres/delete/{id}', "App\Http\Controllers\SemestreController@delete")->name('semestres.delete');
+Route::get('semestres_search', "App\Http\Controllers\SemestreController@search")->name('semestres.search');
+
+
+
+
+
+Route::get('evaluations.liste',"App\Http\Controllers\EvaluationController@index")->name('evaluations.liste');
+Route::get('evaluations.create',"App\Http\Controllers\EvaluationController@create")->name('evaluations.create');
+Route::post('/evaluations.store', "App\Http\Controllers\EvaluationController@store")->name('evaluations.store');
+Route::get('evaluations/edit/{id}', "App\Http\Controllers\EvaluationController@edit")->name('evaluations.edit');
+Route::patch('/edit/traitement', "App\Http\Controllers\EvaluationController@editTraitement")->name('evaluations.editTraitement');
+Route::delete('evaluations/delete/{id}', "App\Http\Controllers\EvaluationController@delete")->name('evaluations.delete');
+Route::get('evaluations_search', "App\Http\Controllers\EvaluationController@search")->name('evaluations.search');

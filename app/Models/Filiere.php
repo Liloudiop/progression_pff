@@ -33,5 +33,10 @@ class Filiere extends Model
         return $this->hasMany(Support::class);
     }
 
+    public function Evaluation()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
+
     
 }

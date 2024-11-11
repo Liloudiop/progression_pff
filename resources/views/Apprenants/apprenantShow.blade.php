@@ -18,43 +18,33 @@
         <th>Nom</th>
         <th>Date Naissance</th>
         <th>Etat</th>
-        <th>Nationalite</th>
         <th>Numero</th>
-        <th>Filiere</th>
-        <th colspan="4">Action</th>
+         <th>Filiere</th> 
+        
     </thead>
     <tbody>
-        @if($apprenants->count()>0)
+        @if($apprenant->count()>0)
 
-        @foreach ($apprenants as $apprenants)
+        @foreach ($apprenant as $apprenants)
         <tr>
             <td>{{ $apprenants->nom_complet }}</td>
-            <td>{{ $apprenants->date_naissance }}</td>
+            <td>{{ \Carbon\Carbon::parse($apprenants->date_naissance)->translatedFormat('d F Y') }}</td>
             <td>{{ $apprenants->etat }}</td>
-            <td>{{ $apprenants->numero1 }}</td>
-            <td>{{ $apprenants->Filiere }}</td>
-            <td>{{ $apprenants->lieu_naissance }}</td>
             <td>{{ $apprenants->email }}</td>
-            <td>{{ $apprenants->cni }}</td>
-            <td>{{ $apprenants->adresse_domicile }}</td>
-            <td>{{ $apprenants->nom_tuteur }}</td>
-            <td>{{ $apprenants->region_origine }}</td>
-            <td>{{ $apprenants->ville_origine }}</td>
-            <td>{{ $apprenants->nom_parent }}</td>
-            <td>{{ $apprenants->numero_parent }}</td>
-            <td>{{ $apprenants->filiere_name }}</td>
+            <td>{{ $apprenants->numero1 }}</td>
 
-            <td><a href="/apprenant/show/{{($apprenants->id)}}"><button class="voir plus">Voir plus</button></a></td>
-            <td><a href="/apprenant/edit/{{($apprenants->id)}}"><button class="modifier">Modifier</button></a></td>
+
+            <td class="no-print"><a href="/apprenant/show/{{($apprenants->id)}}" title="voir plus"><img width="20px" src="/icone/list.svg" alt="voir infos"></a></td>
+            <td class="no-print"><a href="/apprenant/edit/{{($apprenants->id)}}" title="modifier"><img width="20px" src="/icone/edit.svg" alt="modifier"></a></td>
+            <td class="no-print"><a href="/apprenant.profile/{{($apprenants->id)}}" title="voir profil"><img width="20px" src="/icone/eyes1.svg" alt="voir plus"></a></td>
+            
+            
             {{-- <td><a href="/apprenantImg.image/{{($apprenants->id)}}"><button class="modifier">PP</button></a></td> --}}
-            <td><a href="/apprenant.profile/{{($apprenants->id)}}"><button class="modifier">Voir profile</button></a></td>
-
-
 
             <form action="/apprenant/delete/{{($apprenants->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <td><button class="supprimer" onclick="return confirm('Etes vous sur de vouloir supprimer l\'apprenant')">Supprimer</button></td>
+                <td  class="no-print" style="cursor: pointer;" title="supprimer"><img width="20px" src="/icone/delete1.png" alt="supprimer"  onclick="return confirm('Etes vous sur de vouloir supprimer l\'apprenant')"></td>
             </form>
             
 
@@ -70,5 +60,4 @@
 </table>
 
 
-
-
+        

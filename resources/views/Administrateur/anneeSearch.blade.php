@@ -16,7 +16,7 @@
     <title> Systeme de Gestion Scolaire</title>
 <div class="container">
 
-    <h2 class="no-print" >Voici la liste des Années</h2>
+    <h2 class="no-print" >Voici la resultat du recherche</h2>
     <ul>
         
         <li  class="no-print" ><a href="/" class="lien_site">Retourner sur le site</a></li>
@@ -45,7 +45,6 @@
         @foreach ($annee as $annee)
         <tr>
             <td>{{ $annee->nom_promotion }}</td>
-            {{-- <td>{{ $annee->date_debut }}</td> --}}
             <td>{{ \Carbon\Carbon::parse($annee->date_debut)->translatedFormat('d F Y') }}</td>
             <td>{{ \Carbon\Carbon::parse($annee->date_fin)->translatedFormat('d F Y') }}</td>
 

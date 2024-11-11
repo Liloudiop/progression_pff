@@ -8,7 +8,7 @@
     @section('conteneur')
 
 
-    <h2>Voici la liste d'absense</h2>
+    <h2>Voici la liste  de {{$filiere->name}}</h2>
 
     
     <ul class="searchEleve">
@@ -20,7 +20,6 @@
         <form  class="no-print"  action="{{route('formateurNew.classeSearch')}}" method="get">
             {{-- <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}"> --}}
            
-
             <select name="search" id="search" class="search">
                 <option value="">Liste des classes</option>
                 @foreach ($classe as $classes)
@@ -54,9 +53,9 @@
                 @endforeach
     
                 @else
+                <td class="post">Aucun apprenant en base de donnee</td>
+                <td></td>
                     <td></td>
-                    <td></td>
-                    <td class="post">Aucun post en base de donnee</td>
                 @endif
             </tr>
         </tbody>

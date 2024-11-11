@@ -20,7 +20,7 @@
         <input type="date" name="date_naissance" id="date_naissance" required>
 
         <label for="rib">RIB *</label><br>
-        <input type="text" name="rib" id="rib" maxlength="24" placeholder="code banque{5}, code agence {5}, numero compte {12}, cle {2}"  required >
+        <input type="text" name="rib" id="rib" maxlength="24" placeholder="code banque{5}, code guichet {5}, numero compte {12}, cle {2}"  required >
   
       
   

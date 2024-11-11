@@ -5,7 +5,7 @@
     <title> Systeme de Gestion Scolaire</title>
 <div class="container">
 
-    <h2>Voici la liste des Salles</h2>
+    <h2>Voici la resultat du recherche</h2>
     <ul>
         
         <li ><a href="/sallesNew.liste" class="lien_site">Retourner sur la liste</a></li>

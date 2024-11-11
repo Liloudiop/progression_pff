@@ -23,6 +23,11 @@
         <li class="no-print" ><a href="{{route('planning.create')}}">Ajouter une Planning</a></li>
         <li  class="no-print"  class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li>
 
+        <form class="no-print" action="{{route('planning.search')}}" method="get">
+            <input type="search" name="search" id="search" class="search" placeholder="rechercher une planning" value="{{isset($search) ? $search : ''}}">
+            <button  class="no-print" type="submit" id="btnsearch">Rechercher</button>
+        </form>
+    </ul>
     </ul>
 </div>
 

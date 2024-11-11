@@ -128,14 +128,14 @@ class PffController extends Controller
         
             $pff = Pff::where(function($query) use ($search){
                     $query->where('nom_theme', 'like', "%$search%")
-                          ->orWhere('promotion', 'like', "%$search%")
+                          ->where('files', 'like', "%$search%")
                           ->orWhere('nom_acteur', 'like', "%$search%");
                 })
                 ->orWhereHas('filiere', function($query) use ($search){
                     $query->where('name', 'like', "%$search%");
                 })
                 ->orWhereHas('annee', function($query) use ($search){
-                    $query->where('nom_annee', 'like', "%$search%");
+                    $query->where('nom_promotion', 'like', "%$search%");
                 })
                 ->with('filiere') // Charger la relation 'filiere' avec les salles
                 ->with('annee') // Charger la relation 'annee' avec les salles

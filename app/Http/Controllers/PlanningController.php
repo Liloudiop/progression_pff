@@ -33,6 +33,7 @@ class PlanningController extends Controller
      */
     public function store(Request $request)
     {
+        
         if ($request) {
             # code...
             $plannings = new Planning();
@@ -47,6 +48,23 @@ class PlanningController extends Controller
             return redirect("/planning.liste");
         }
     }
+
+//     public function store(Request $request)
+// {
+//     $plannings = new Planning;
+
+//     $plannings->nom = $request->input('nom');
+//     $plannings->annee_id = $request->input('annee_id');
+//     $plannings->departement = $request->input('departement');
+
+//     // Stocker le fichier et obtenir son chemin
+//     if ($request->hasFile('files')) {
+//         $path = $request->file('files')->store('public/files');
+//         $planning->files = $path; // Enregistrer le chemin dans la base de données
+//     }
+//     $plannings->save();
+//     return redirect("/planning.liste");
+// }
 
      // Function pour modifier
 
@@ -83,5 +101,26 @@ class PlanningController extends Controller
             }
             return redirect("/planning.liste");
     
+        }
+
+        public function search(Request $request) {
+            $search = $request->search;
+    
+            $plannings = Planning::where(function($query) use ($search){
+                $query->where('nom', 'like' ,"%$search%")
+                ->orwhere('files', 'like' ,"%$search%")
+                ->orwhere('departement', 'like' ,"%$search%");
+            })
+        
+        ->orWhereHas('annee', function($query) use ($search){
+            $query->where('nom_promotion', 'like', "%$search%");
+        })
+        ->with('annee') // Charger la relation 'filiere' avec les salles
+        ->get();
+
+            
+    
+            // dd($formateurs);
+            return view('Administrateur.planningSearch', compact('plannings', 'search'));
         }
 }

@@ -6,6 +6,7 @@
 
     @section('conteneur')
 
+    <h2  class="no-print" >Voici le resultat de cette recherche</h2>
 
 
     <div class="container">

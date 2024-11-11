@@ -87,12 +87,15 @@ class ApprenantController extends Controller
 
     public function show($id){
        
-    $filieres = Filiere::all();
-    $apprenants = Apprenant::with('filiere')->find($id);
+        $apprenant = Apprenant::with('filiere')->find($id); // Récupère l'apprenant avec sa filière
+    
+        // Vérifiez si l'apprenant existe
+        if (!$apprenant) {
+            return redirect()->back()->with('error', 'Apprenant non trouvé');
+        }
     
         // dd($apprenant);
-
-        return view('Apprenants.ApprenantShow',compact('apprenants'));
+        return view('Apprenants.ApprenantShow', compact('apprenant'));
       }
     
 
@@ -221,5 +224,21 @@ class ApprenantController extends Controller
         return view('Apprenants.community');
     }
     
+ 
+    public function search(Request $request) {
+        $search = $request->search;
     
+        $apprenant = Apprenant::where(function($query) use ($search){
+                $query->where('nom_complet', 'like', "%$search%")
+                      ->orWhere('date_naissance', 'like', "%$search%")
+                      ->orWhere('etat', 'like', "%$search%")
+                      ->orWhere('numero1', 'like', "%$search%")
+                      ->orWhere('email', 'like', "%$search%");
+            })
+           
+            ->get();
+    
+        // dd($salles); // Debug: affiche les résultats pour vérification
+        return view('Apprenants.apprenantSearch', compact('apprenant', 'search'));
+    }
 }

@@ -5,11 +5,11 @@
     <title> Systeme de Gestion Scolaire</title>
 <div class="container">
 
-    <h2>Voici la liste des Filieres</h2>
+    <h2>Voici la resultat du recherche</h2>
     <ul>
         
         <li ><a href="{{route('filiere.liste')}}" class="lien_site">Retourner sur la liste</a></li>
-        <li><a href="{{route('filiere.create')}}">Ajouter un filiere</a></li>
+        <li><a href="{{route('filieres.create')}}">Ajouter un filiere</a></li>
 
         <form action="{{route('filieres.search')}}" method="get">
             <input type="search" name="search" id="search" class="search" placeholder="rechercher une filiere" value="{{isset($search) ? $search : ''}}">

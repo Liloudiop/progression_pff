@@ -93,6 +93,7 @@ class SalleController extends Controller
             $salles = Salle::where(function($query) use ($search){
                     $query->where('nom_salle', 'like', "%$search%")
                           ->orWhere('emplacement', 'like', "%$search%")
+                          ->orWhere('capacite', 'like', "%$search%")
                           ->orWhere('filiere_id', 'like', "%$search%");
                 })
                 ->orWhereHas('filiere', function($query) use ($search){

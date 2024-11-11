@@ -25,7 +25,9 @@
             <tr>
                 <td>{{ $pff->nom_acteur }}</td>
                 <td>{{ $pff->nom_theme }}</td>
-                <td>{{ $pff->files }}</td>
+                {{-- <td>{{ $pff->files }}</td> --}}
+                <td  title="telecharger"><a href="{{ asset('images/' . $pff->files) }}" download target="_blank">{{ $pff->files }}</a></td>
+                
                 <td>{{ $pff->annee_name}}</td>
 
                 <td>{{ $pff->filiere_name }}</td>
@@ -33,7 +35,7 @@
                 {{-- @foreach ($fichier as $fichier)
                 <a href="{{ route('telecharger', ['id' => $fichier->id]) }}">Télécharger {{ $fichier->files }}</a>
                 @endforeach --}}
-                <td><a href="{{ $pff->files }}" download="telecharger"><button class="telecharger" style="cursor: pointer" title="telecharger"><img width="20px" src="/icone/download.svg" alt="telecharger"></button></a></td>
+                <td title="telecharger"><a href="{{ asset('images/' . $pff->files) }}" download target="_blank"><img width="20px" src="/icone/download.svg" alt="telecharger"></a></td>
                 
                 
                 

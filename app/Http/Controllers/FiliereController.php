@@ -94,6 +94,8 @@ class FiliereController extends Controller
                 ->orwhere('description', 'like' ,"%$search%")
                 ->orwhere('departement', 'like' ,"%$search%");
             })->get();
+
+            
     
             // dd($formateurs);
             return view('Administrateur.filiereSearch', compact('filieres', 'search'));

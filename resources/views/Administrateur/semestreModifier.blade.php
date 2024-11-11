@@ -4,7 +4,7 @@
 
     <title> Systeme de Gestion Scolaire</title>
       <form action="{{route('semestres.editTraitement')}}" method="post">
-         <h4>Modifier Annee</h4>
+         <h4>Modifier Semestre</h4>
 
         {!! csrf_field() !!}
         @method("PATCH")

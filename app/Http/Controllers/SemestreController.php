@@ -85,4 +85,26 @@ class SemestreController extends Controller
             return redirect("/semestres.liste");
     
         }
+
+
+        public function search(Request $request) {
+            $search = $request->search;
+    
+            $semestre = Semestre::where(function($query) use ($search){
+                $query->where('nom_semestre', 'like' ,"%$search%")
+                ->orwhere('date_debut', 'like' ,"%$search%")
+                ->orwhere('date_fin', 'like' ,"%$search%");
+            })
+        
+        ->orWhereHas('annee', function($query) use ($search){
+            $query->where('nom_promotion', 'like', "%$search%");
+        })
+        ->with('annee') // Charger la relation 'filiere' avec les salles
+        ->get();
+
+            
+    
+            // dd($formateurs);
+            return view('Administrateur.semestreSearch', compact('semestre', 'search'));
+        }
 }

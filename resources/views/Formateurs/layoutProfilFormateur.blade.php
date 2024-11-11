@@ -29,7 +29,7 @@
                         <ul class="collapse__menu">
                             <a href="{{route('support.liste')}}" class="collapse__sublink">Cours</a>
                             <a href="{{route('documentation.liste')}}" class="collapse__sublink">Documentation</a>
-                            <a href="{{route('formateurNew.note')}}" class="collapse__sublink">Note</a>
+                            <a href="{{route('evaluations.liste')}}" class="collapse__sublink">Note</a>
                         </ul>
                     </div>
 

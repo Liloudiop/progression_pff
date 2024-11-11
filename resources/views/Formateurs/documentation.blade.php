@@ -51,7 +51,10 @@
         @foreach ($documentation as $documentations)
         <tr>
             <td>{{ $documentations->Nom}}</td>
-            <td>{{ $documentations->lien }}</td>
+            <td><a href="{{ $documentations->lien }}" target="_blank">{{ $documentations->lien }}</a></td>
+
+
+            {{-- <td >{{ $documentations->lien }}</td> --}}
             <td>{{ \Carbon\Carbon::parse($documentations->created_at)->translatedFormat('d F Y') }}</td>
             
             

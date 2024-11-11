@@ -23,4 +23,9 @@ class Annee extends Model
     {
         return $this->hasMany(Semestre::class);
     }
+
+    public function Evaluation()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
 }

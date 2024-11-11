@@ -8,7 +8,7 @@
     @section('conteneur')
 
 
-    <h2>Voici la liste d'absense</h2>
+    <h2>Voici la liste des eleves</h2>
 
     
     <ul class="searchEleve">
@@ -17,8 +17,8 @@
         {{-- <li  class="no-print"   class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li> --}}
 
 
-        <form  class="no-print"  action="{{route('formateurNew.classeSearch')}}" method="get">
-            {{-- <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}"> --}}
+        {{-- <form  class="no-print"  action="{{route('formateurNew.classeSearch')}}" method="get">
+            {{-- <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}"> 
            
 
             <select name="search" id="search" class="search">
@@ -30,7 +30,7 @@
            </select>
         
             <button type="submit" id="btnsearch">Rechercher</button>
-        </form>
+        </form> --}}
 
     </ul>
     
@@ -41,15 +41,15 @@
             <th>Action</th>
         </thead>
         <tbody>
-            @if($apprenant->count()>0)
+            @if($apprenants->count()>0)
     
-            @foreach ($apprenant as $apprenants)
+            @foreach ($apprenants as $apprenants)
             <tr>
                 <td>{{ $apprenants->nom_complet }}</td>
                
     
     
-                <td><a href="/apprenant/show/{{($apprenants->id)}}"><button class="voir plus">Absent</button></a></td>
+                <td><a href="/apprenant/show/{{($apprenants->id)}}"><button class="voir plus">ajouter note</button></a></td>
                
                 @endforeach
     

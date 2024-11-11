@@ -4,7 +4,7 @@
 @extends('Formateurs.profil')
 
     @section('conteneur')
-    <h2 >Page Formateur Note</h2>
+    <h2>Page note du filiere {{$filiere->name}}</h2>
 
     {{-- <h2>Voici la liste  de {{$filiere->name}}</h2> --}}
 
@@ -14,26 +14,26 @@
         {{-- <li  class="no-print"   class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li> --}}
 
 
-        <form  class="no-print"  action="{{route('formateurNew.searchNote')}}" method="get">
-            <input type="search" name="search" id="search" class="search" placeholder="rechercher une classe" value="{{isset($search) ? $search : ''}}">
+        {{-- <form  class="no-print"  action="{{route('formateurNew.classeSearch')}}" method="get">
+            {{-- <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}">
            
-            {{-- <select name="search" id="search" class="search">
+            <select name="search" id="search" class="search">
                 <option value="">Liste des classes</option>
-                @foreach ($classe as $classes)
+                @foreach ($filiere as $classes)
                     <option value="{{$classes->name}}" >{{$classes->name}}</option>
-                @endforeach --}}
+                @endforeach
     
            </select>
         
             <button type="submit" id="btnsearch">Rechercher</button>
-        </form>
+        </form> --}}
 
         {{-- <form  class="no-print"  action="{{route('formateurNew.classeSearch')}}" method="get">
             {{-- <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}"> 
            
             <select name="search" id="search" class="search">
                 <option value="">Choisir departement</option>
-                @foreach ($classe as $classes)
+                @foreach ($filieres as $classes)
                     <option value="{{$classes->departement}}" >{{$classes->departement}}</option>
                 @endforeach
     
@@ -47,25 +47,25 @@
     
     <table  style="width: 100%">
         <thead>
-            <th>Filiere</th>
+            <th>Nom Complet</th>
             
             <th>Action</th>
         </thead>
         <tbody>
-            @if($filiere->count()>0)
+            @if($apprenant->count()>0)
     
-            @foreach ($filiere as $filieres)
+            @foreach ($apprenant as $apprenants)
             <tr>
-                <td>{{ $filieres->name }}</td>
+                <td>{{ $apprenants->nom_complet }}</td>
                
     
     
-                <td><a href="/formateurNew.noteApprenant/{{($filieres->name)}}"><button class="voir plus">Voir apprenants</button></a></td>
+                <td><a href="/apprenant/show/{{($apprenants->id)}}"><button class="voir plus">ajouter note</button></a></td>
                
                 @endforeach
     
                 @else
-                <td class="post">Aucun post en base de donnee</td>
+                <td class="post">Aucune apprenant en base de donnee</td>
                 <td></td>
                     <td></td>
                 @endif

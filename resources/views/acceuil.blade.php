@@ -29,6 +29,7 @@
                     <li><a href="{{route('pffNew.liste')}}">PFF</a></li>
                     <li><a href="{{route('planning.liste')}}">Planning</a></li>
                     <li><a href="{{route('semestres.liste')}}">Semestre</a></li>
+                    <li><a href="{{route('evaluations.liste')}}">Evaluation</a></li>
                 </ul>
             </nav>
         </div>

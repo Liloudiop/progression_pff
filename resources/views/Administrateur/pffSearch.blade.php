@@ -5,7 +5,7 @@
     <title> Systeme de Gestion Scolaire</title>
 <div class="container">
 
-    <h2>Voici la liste des Projet de fin d'etudes</h2>
+    <h2>Voici la resultat du recherche</h2>
     <ul>
         
         <li ><a href="{{route('pffNew.liste')}}" class="lien_site">Retourner sur la liste</a></li>
@@ -26,7 +26,6 @@
         <th>Document</th>
         <th>Promotion</th>
         <th>Filiere</th>
-        <th>Annee</th>
         <th colspan="2">Action</th>
     </thead>
     <tbody>
@@ -37,9 +36,8 @@
             <td>{{ $pff->nom_acteur }}</td>
             <td>{{ $pff->nom_theme }}</td>
             <td>{{ $pff->files }}</td>
-            <td>{{ $pff->promotion }}</td>
+            <td>{{ $pff->filiere ? $pff->annee->nom_promotion : 'Non spécifié' }}</td>
             <td>{{ $pff->filiere ? $pff->filiere->name : 'Non spécifié'  }}</td>
-            <td>{{ $pff->filiere ? $pff->annee->nom_annee : 'Non spécifié' }}</td>
 
 
             <td><a href="pffNew/edit/{{($pff->id)}}"><button class="modifier">Modifier</button></a></td>

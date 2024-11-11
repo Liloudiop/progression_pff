@@ -21,12 +21,13 @@
         @foreach ($plannings as $planning)
         <tr>
             <td>{{ $planning->nom }}</td>
-            <td>{{ $planning->files }}</td>
+            {{-- <td>{{ $planning->files }}</td> --}}
+            <td title="telecharger"><a href="{{ asset('images/' . $planning->files) }}" download target="_blank">{{ $planning->files }}</a></td>
             <td>{{ $planning->nom_promotion }}</td>
             <td>{{ $planning->departement }}</td>
 
 
-            <td><a href="#"><button class="telecharger" style="cursor: pointer" title="telecharger"><img width="20px" src="/icone/download.svg" alt="telecharger"></button></a></td>
+            <td title="telecharger"><a href="{{ asset('images/' . $planning->files) }}" download target="_blank"><img width="20px" src="/icone/download.svg" alt="telecharger"></a></td>
 
           
 

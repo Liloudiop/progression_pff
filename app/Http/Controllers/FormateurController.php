@@ -5,6 +5,8 @@ use App\Models\Formateur;
 use App\Models\Filiere;
 use App\Models\Apprenant;
 use App\Models\Planning;
+use App\Models\Evaluation;
+use App\Models\Semestre;
 use App\Models\Annee;
 use Illuminate\Http\Request;
 
@@ -145,9 +147,43 @@ class FormateurController extends Controller
 
     public function note()
     {
-
-        return view('Formateurs.note');
+     
+          $classe = Filiere::all();
+          $filiere = Filiere::all();
+    
+        //   dd($filiere);
+        return view('Formateurs.note', compact( 'filiere', 'classe'));
     }
+
+    // permet de filtrer les classe
+
+    public function searchNote(Request $request) {
+        $search = $request->search;
+
+        $filiere = Filiere::where('name', $search)->first();
+        
+        // Si la filière est trouvée, récupérer tous les élèves de cette filière
+        if ($filiere) {
+            $apprenant = Apprenant::where('filieres_id', $filiere->id)->get();
+        } else {
+            // Si la filière n'est pas trouvée, retourner un tableau vide
+            return redirect()->route('formateurNew.note')->with('error', 'Filière non trouvée.');
+        }
+
+
+        return view('Formateurs.noteSearchClasse', compact( 'apprenant', 'filiere'));
+    }
+
+
+    public function noteEleveshow($filiere){
+         // Récupérer les apprenants de la filière sélectionnée
+    $apprenants = Apprenant::where('filiere', $filiere)->get();
+
+    dd($apprenant);
+    // Passer les apprenants et la filière à la vue
+    return view('Formateurs.noteApprenants', compact('apprenants'));
+    
+      }
 
     public function statistique()
     {
@@ -179,11 +215,11 @@ class FormateurController extends Controller
 
         $formateurs = Formateur::where(function($query) use ($search){
             $query->where('nom_complet', 'like' ,"%$search%")
-            ->orwhere('specialite', 'like' ,"%$search%")
-            ->orwhere('nom_banque', 'like' ,"%$search%");
+            ->orwhere('email', 'like' ,"%$search%")
+            ->orwhere('telephone', 'like' ,"%$search%");
         })->get();
 
-        // dd($formateurs);
+
         return view('Administrateur.formateurSearch', compact('formateurs', 'search'));
     }
 
@@ -192,6 +228,7 @@ class FormateurController extends Controller
     public function listEleve()
     {
         // Rechercher la filière "DFE"
+        $classe = Filiere::all();
         $filiere = Filiere::where('name', 'DFE')->first();
         
         // Si la filière est trouvée, récupérer tous les élèves de cette filière
@@ -202,29 +239,36 @@ class FormateurController extends Controller
             $apprenant = [];
         }
 
+
+
         // Retourner la vue avec les élèves récupérés
-        return view('Formateurs.eleveLister', compact('apprenant', 'filiere'));
+        return view('Formateurs.eleveLister', compact('apprenant', 'filiere', 'classe'));
     }
 
 
-//     public function listEleve(){
-//     // Récupérer toutes les filières
-//     $filieres = Filiere::all();
+    public function searchClasse(Request $request) {
 
-//     // Initialiser un tableau pour stocker les apprenants par filière
-//     $apprenant = [];
+        $classe = Filiere::all();
 
-//     // Parcourir chaque filière et récupérer les apprenants associés
-//     foreach ($filieres as $filiere) {
-//         // Récupérer les apprenants pour chaque filière
-//         $apprenant[$filiere->name] = Apprenant::where('filieres_id', $filiere->id)->get();
-//     }
+        $search = $request->search;
 
-//     // dd($apprenant);
-//     // Retourner la vue avec les filières et les apprenants par filière
-//     return view('Formateurs.eleveLister', compact('apprenant', 'filieres'));
-// }
+        $filiere = Filiere::where('name', $search)->first();
+        
+        // Si la filière est trouvée, récupérer tous les élèves de cette filière
+        if ($filiere) {
+            $apprenant = Apprenant::where('filieres_id', $filiere->id)->get();
+        } else {
+            // Si la filière n'est pas trouvée, retourner un tableau vide
+            $apprenant = [];
+        }
 
+
+
+
+        // dd($filiere);
+        return view('Formateurs.eleveClasse', compact('apprenant', 'filiere', 'classe'));
+
+    }
 
    
 }
