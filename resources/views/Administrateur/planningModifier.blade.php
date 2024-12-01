@@ -1,47 +1,71 @@
-<link rel="stylesheet" href="{{asset('css/create.css')}}">
-<link rel="stylesheet" href="{{asset('Js/form.css')}}">
+<link rel="stylesheet" href="{{ asset('Js/formulaire.css') }}">
 <link rel="shortcut icon" href="/images/logo2.png">
 
-    <title> Systeme de Gestion Scolaire</title>
+<title> Systeme de Gestion Scolaire</title>
 
 
-    <form action="{{route('planning.editTraitement')}}" method="post">
-        @csrf
-    <h4>Modifier le planning</h4>
-        <hr>
-
-        {!! csrf_field() !!}
-        @method("PATCH")
-        <input type="hidden" name="id" id="id" value="{{$plannings->id}}" id="id" />
-
-        <label for="nom">Nom Planning</label>
-        <input type="text" name="nom" id="nom" required value="{{$plannings->nom}}""> 
-
-        <label for="files">Fichier</label>
-        <input type="file" name="files" id="files" required value="{{$plannings->files}}>
-
-        <label for="departement">Departement</label>
-        <select name="departement" id="departement">
-            <option value="TIC">TIC</option>
-            <option value="Automobile">Automobile</option>
-
-        </select>
+<link rel="stylesheet" href="{{ asset('css/formulaire.css') }}">
 
 
-        <label for="cours_filiere_id">Promotion</label>
-        <select name="annee_id" >
-            @foreach ($annee as $annee)
-                <option value="{{$annee->id}}" >{{$annee->nom_promotion}}</option>
-            @endforeach
+@extends('layout')
 
-        </select>
+@section('content')
+    <main class="main-content">
 
-        
+        <div class="form-tout">
+            <h2>Modifier Planning</h2>
 
-      
-       
-        <input type="submit" value="Valider">
+            <form class="student-form" action="{{ route('planning.editTraitement') }}" method="post">
+                {!! csrf_field() !!}
+                @method('PATCH')
 
-        {{-- <p class="p">Vous avez deja un compte ? <a href="/pages/login">se connecter</a></p> --}}
-        <p class="p">Merci de remplir tous les champs  pour modifier <span>cette planning.</span> </p>
-    </form>
+
+
+
+                <input type="hidden" name="id" id="id" value="{{ $plannings->id }}" id="id" />
+
+
+                <div class="form-group">
+                    <label for="nom">Nom Planning</label>
+                    <input type="text" name="nom" id="nom" required value="{{ $plannings->nom }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="files">Fichier</label>
+                    <input type="file" name="files" id="files" required value="{{ $plannings->files }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="departement">Departement</label>
+                    <select name="departement" id="departement">
+                        <option value="TIC">TIC</option>
+                        <option value="Automobile">Automobile</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cours_filiere_id">Promotion</label>
+                    <select name="annee_id">
+                        @foreach ($annee as $annee)
+                            <option value="{{ $annee->id }}">{{ $annee->nom_promotion }}</option>
+                        @endforeach
+
+                    </select>
+
+
+                </div>
+
+                
+
+                <button type="submit" class="submit-btn">Modifier </button>
+                <button class="submit-btn" id="annuler"><a href="/planning.liste">Annuler</a></button>
+
+            </form>
+        </div>
+    </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Gestion Scolaire. Tous droits réservés.</p>
+    </footer>
+@endsection

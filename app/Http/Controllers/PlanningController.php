@@ -34,8 +34,7 @@ class PlanningController extends Controller
     public function store(Request $request)
     {
         
-        if ($request) {
-            # code...
+        
             $plannings = new Planning();
             
             $plannings->nom = $request->input('nom');
@@ -46,25 +45,8 @@ class PlanningController extends Controller
             
             $plannings ->save();
             return redirect("/planning.liste");
-        }
+        
     }
-
-//     public function store(Request $request)
-// {
-//     $plannings = new Planning;
-
-//     $plannings->nom = $request->input('nom');
-//     $plannings->annee_id = $request->input('annee_id');
-//     $plannings->departement = $request->input('departement');
-
-//     // Stocker le fichier et obtenir son chemin
-//     if ($request->hasFile('files')) {
-//         $path = $request->file('files')->store('public/files');
-//         $planning->files = $path; // Enregistrer le chemin dans la base de données
-//     }
-//     $plannings->save();
-//     return redirect("/planning.liste");
-// }
 
      // Function pour modifier
 

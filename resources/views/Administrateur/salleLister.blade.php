@@ -14,7 +14,12 @@
 </style>
 
     <title> Systeme de Gestion Scolaire</title>
-<div class="container">
+
+    @extends('layout')
+
+    @section('content')
+
+     <div class="container">
 
     <h2 class="no-print" >Voici la liste des Salles</h2>
     <ul>
@@ -81,6 +86,7 @@
 </script>
 
 
+@endsection
 
 
 

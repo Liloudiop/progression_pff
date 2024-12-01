@@ -8,44 +8,32 @@
 
     {{-- <h2>Voici la liste  de {{$filiere->name}}</h2> --}}
 
-    <ul class="searchEleve">
+
+
+    <div class="container">
+
+
+    <ul >
         
 
-        {{-- <li  class="no-print"   class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li> --}}
-
+        <li  class="no-print" ><a href="{{route('notes.liste')}}" class="lien_site">Ajouter note</a></li>
 
         <form  class="no-print"  action="{{route('formateurNew.searchNote')}}" method="get">
             <input type="search" name="search" id="search" class="search" placeholder="rechercher une classe" value="{{isset($search) ? $search : ''}}">
            
-            {{-- <select name="search" id="search" class="search">
-                <option value="">Liste des classes</option>
-                @foreach ($classe as $classes)
-                    <option value="{{$classes->name}}" >{{$classes->name}}</option>
-                @endforeach --}}
-    
-           </select>
+          
         
             <button type="submit" id="btnsearch">Rechercher</button>
         </form>
 
-        {{-- <form  class="no-print"  action="{{route('formateurNew.classeSearch')}}" method="get">
-            {{-- <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}"> 
-           
-            <select name="search" id="search" class="search">
-                <option value="">Choisir departement</option>
-                @foreach ($classe as $classes)
-                    <option value="{{$classes->departement}}" >{{$classes->departement}}</option>
-                @endforeach
-    
-           </select>
-        
-            <button type="submit" id="btnsearch">Rechercher</button>
-        </form> --}}
+      
 
     </ul>
+
+</div>
     
     
-    <table  style="width: 100%">
+    <table  style="margin-top: -80px; width:100%"   >
         <thead>
             <th>Filiere</th>
             

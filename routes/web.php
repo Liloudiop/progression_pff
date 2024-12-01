@@ -19,6 +19,29 @@ Route::get('/', function () {
 
 
 
+Route::get('/layout', function () {
+    return view('layout');
+});
+
+
+Route::get('/acceuil2', function () {
+    return view('acceuil2');
+});
+
+
+Route::get('/formulaire', function () {
+    return view('form');
+});
+
+Route::get('/tableau', function () {
+    return view('tableau');
+});
+
+Route::get('indexHome', "App\Http\Controllers\ApprenantController@indexHome")->name('indexHome');
+
+
+
+
 // Utilisation des routes groupés
 
 // Route::prefix('apprenant')->group(function(){
@@ -60,10 +83,14 @@ Route::get('apprenant.profile.create',"App\Http\Controllers\ProfileApprenantCont
 Route::post('apprenant.profileStore',"App\Http\Controllers\ProfileApprenantController@store")->name('apprenant.profileStore');
 Route::get('apprenant.profile/{id}', "App\Http\Controllers\ApprenantController@profileID")->name('apprenant.profile');
 Route::get('apprenant.pff', "App\Http\Controllers\ApprenantController@pff")->name('apprenant.pff');
+Route::get('apprenant.pffSearch', "App\Http\Controllers\ApprenantController@pffSearch")->name('apprenant.pffSearch');
 Route::get('apprenant.cours', "App\Http\Controllers\ApprenantController@cours")->name('apprenant.cours');
+Route::get('apprenant.coursSearch', "App\Http\Controllers\ApprenantController@coursSearch")->name('apprenant.coursSearch');
 Route::get('apprenant.telechargerCours', "App\Http\Controllers\ApprenantController@telechargerCours")->name('apprenant.telechargerCours');
 Route::get('apprenant.planning', "App\Http\Controllers\ApprenantController@Planning")->name('apprenant.planning');
+Route::get('apprenant.planningSearch', "App\Http\Controllers\ApprenantController@planningSearch")->name('apprenant.planningSearch');
 Route::get('apprenant.doc', "App\Http\Controllers\ApprenantController@documentation")->name('apprenant.doc');
+Route::get('apprenant.docSearch', "App\Http\Controllers\ApprenantController@docSearch")->name('apprenant.docSearch');
 Route::get('apprenant.absence', "App\Http\Controllers\ApprenantController@absence")->name('apprenant.absence');
 Route::get('apprenant.bulletin', "App\Http\Controllers\ApprenantController@bulletin")->name('apprenant.bulletin');
 Route::get('apprenant.settings', "App\Http\Controllers\ApprenantController@settings")->name('apprenant.settings');
@@ -134,6 +161,8 @@ Route::get('formateurNew.eleve', "App\Http\Controllers\FormateurController@listE
 Route::get('formateurNew.classeSearch', "App\Http\Controllers\FormateurController@searchClasse")->name('formateurNew.classeSearch');
 Route::get('formateurNew.searchNote', "App\Http\Controllers\FormateurController@searchNote")->name('formateurNew.searchNote');
 Route::get('formateurNew.noteApprenant/{filiere}', "App\Http\Controllers\FormateurController@noteEleveshow")->name('formateurNew.noteApprenant');
+Route::get('formateurNew.planningSearch', "App\Http\Controllers\FormateurController@planningSearch")->name('formateurNew.planningSearch');
+
 
 
 
@@ -237,6 +266,20 @@ Route::get('evaluations.liste',"App\Http\Controllers\EvaluationController@index"
 Route::get('evaluations.create',"App\Http\Controllers\EvaluationController@create")->name('evaluations.create');
 Route::post('/evaluations.store', "App\Http\Controllers\EvaluationController@store")->name('evaluations.store');
 Route::get('evaluations/edit/{id}', "App\Http\Controllers\EvaluationController@edit")->name('evaluations.edit');
-Route::patch('/edit/traitement', "App\Http\Controllers\EvaluationController@editTraitement")->name('evaluations.editTraitement');
+Route::patch('evaluations/edit/traitement', "App\Http\Controllers\EvaluationController@editTraitement")->name('evaluations.editTraitement');
 Route::delete('evaluations/delete/{id}', "App\Http\Controllers\EvaluationController@delete")->name('evaluations.delete');
 Route::get('evaluations_search', "App\Http\Controllers\EvaluationController@search")->name('evaluations.search');
+
+
+
+
+Route::get('notes.liste',"App\Http\Controllers\NoteController@index")->name('notes.liste');
+Route::get('notes.create',"App\Http\Controllers\NoteController@create")->name('notes.create');
+Route::post('/notes.store', "App\Http\Controllers\NoteController@store")->name('notes.store');
+Route::get('notes/edit/{id}', "App\Http\Controllers\NoteController@edit")->name('notes.edit');
+Route::patch('/edit/traitement', "App\Http\Controllers\NoteController@editTraitement")->name('notes.editTraitement');
+Route::delete('notes/delete/{id}', "App\Http\Controllers\NoteController@delete")->name('notes.delete');
+Route::get('notes_search', "App\Http\Controllers\NoteController@search")->name('notes.search');
+
+
+Route::post('/absents/absent/{id}', "App\Http\Controllers\AbsentController@markAbsent")->name('absents.absent');

@@ -23,8 +23,8 @@
 
     <ul>
         
-        <li  class="no-print" ><a style="font-size: 12px; padding:12px;" href="/" class="lien_site">Retourner sur le site</a></li>
-        <li class="no-print" ><a style="font-size: 12px; padding:12px;" href="{{route('support.create')}}">Ajouter une Support</a></li>
+        <li  class="no-print" ><a  href="/" class="lien_site">Retourner sur le site</a></li>
+        <li class="no-print" ><a  href="{{route('support.create')}}">Ajouter cours</a></li>
         <li  class="no-print"  class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li>
 
 

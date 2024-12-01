@@ -1,38 +1,61 @@
-<link rel="stylesheet" href="{{asset('css/create.css')}}">
-<link rel="stylesheet" href="{{asset('Js/form.css')}}">
+<link rel="stylesheet" href="{{ asset('Js/formulaire.css') }}">
 <link rel="shortcut icon" href="/images/logo2.png">
 
-    <title> Systeme de Gestion Scolaire</title>
+<title> Systeme de Gestion Scolaire</title>
 
 
-    <form action="{{route('sallesNew.store')}}" method="post">
-        @csrf
-    <h4>Ajouter Salle</h4>
-        <hr>
+<link rel="stylesheet" href="{{ asset('css/formulaire.css') }}">
 
-        <label for="nom_salle">Nom Salle</label>
-        <input type="text" name="nom_salle" id="nom_salle" required> 
 
-        <label for="capacite">Capacite</label>
-        <input type="text" name="capacite" id="capacite" required>
+@extends('layout')
 
-        <label for="emplacement">Emplacement</label>
-        <select name="emplacement" id="emplacement">
-            <option value="Zone A">Zone A</option>
-            <option value="Zone B">Zone B</option>
-        </select>
+@section('content')
+    <main class="main-content">
 
-        <label for="salle_filiere_id">Filiere</label>
-        <select name="salle_filiere_id" >
-            {{-- <option value="">--filière--</option> --}}
-            @foreach ($filieres as $filiere)
-                <option value="{{$filiere->id}}" >{{$filiere->name}}</option>
-            @endforeach
+        <div class="form-tout">
+            <h2>Ajouter Salle</h2>
 
-       </select>
+            <form class="student-form" action="{{ route('sallesNew.store') }}" method="post">
+                @csrf
 
-        <input type="submit" value="Valider">
+                <div class="form-group">
+                    <label for="nom_salle">Nom Salle</label>
+                    <input type="text" name="nom_salle" id="nom_salle" required>
+                </div>
+                <div class="form-group">
+                    <label for="capacite">Capacite</label>
+                    <input type="text" name="capacite" id="capacite" required>
+                </div>
+                <div class="form-group">
+                    <label for="emplacement">Emplacement</label>
+                    <select name="emplacement" id="emplacement">
+                        <option value="Zone A">Zone A</option>
+                        <option value="Zone B">Zone B</option>
+                    </select>
 
-        {{-- <p class="p">Vous avez deja un compte ? <a href="/pages/login">se connecter</a></p> --}}
-        <p class="p">Merci de remplir tous les champs  pour ajouter <span>un salle.</span> </p>
-    </form>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="salle_filiere_id">Filiere</label>
+                    <select name="salle_filiere_id" >
+            
+                        @foreach ($filieres as $filiere)
+                            <option value="{{$filiere->id}}" >{{$filiere->name}}</option>
+                        @endforeach
+            
+                   </select>
+
+                </div>
+
+                <button type="submit" class="submit-btn">Ajouter </button>
+                <button class="submit-btn" id="annuler"><a href="sallesNew.liste">Annuler</a></button>
+
+            </form>
+        </div>
+    </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Gestion Scolaire. Tous droits réservés.</p>
+    </footer>
+@endsection

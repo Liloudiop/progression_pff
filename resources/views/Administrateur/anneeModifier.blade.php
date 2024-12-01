@@ -1,27 +1,58 @@
-
-<link rel="stylesheet" href="{{asset('css/create.css')}}">
+<link rel="stylesheet" href="{{ asset('Js/formulaire.css') }}">
 <link rel="shortcut icon" href="/images/logo2.png">
 
-    <title> Systeme de Gestion Scolaire</title>
-      <form action="{{route('annees.editTraitement')}}" method="post">
-         <h4>Modifier L'annèe</h4>
+<title> Systeme de Gestion Scolaire</title>
 
-        {!! csrf_field() !!}
-        @method("PATCH")
-        <input type="hidden" name="id" id="id" value="{{$annee->id}}" id="id" />
 
-        <label for="nom_annee">Nom</label>
-        <input type="text" name="nom" id="nom_annee" value="{{$annee->nom_promotion}}" required> 
+<link rel="stylesheet" href="{{ asset('css/formulaire.css') }}">
 
-        <label for="date_debut">Date Debut</label>
-        <input type="date" name="date_debut" id="date_debut" value="{{$annee->date_debut}}" required>
 
-        <label for="date_fin">Date Fin</label>
-        <input type="date" name="date_fin" id="date_fin" value="{{$annee->date_fin}}" required>
+@extends('layout')
 
-        <input type="submit" value="Valider" >
-        <p class="p">Merci d'apporter des modifications pour cette <span>annee.</span> </p>
+@section('content')
+    <main class="main-content">
 
-    </form>
-    
+        <div class="form-tout">
+            <h2>Modifier L'annee</h2>
 
+            <form class="student-form" action="{{ route('annees.editTraitement') }}" method="post">
+                {!! csrf_field() !!}
+                @method('PATCH')
+
+
+
+                <input type="hidden" name="id" id="id" value="{{ $annee->id }}" id="id" />
+
+
+                <div class="form-group">
+
+
+                    <label for="nom_annee">Nom</label>
+                    <input type="text" name="nom" id="nom_annee" value="{{ $annee->nom_promotion }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_debut">Date Debut</label>
+                    <input type="date" name="date_debut" id="date_debut" value="{{$annee->date_debut}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_fin">Date Fin</label>
+                    <input type="date" name="date_fin" id="date_fin" value="{{$annee->date_fin}}" required>
+                </div>
+
+
+
+
+
+                <button type="submit" class="submit-btn">Modifier </button>
+                <button class="submit-btn" id="annuler"><a href="/annees.liste">Annuler</a></button>
+
+            </form>
+        </div>
+    </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Gestion Scolaire. Tous droits réservés.</p>
+    </footer>
+@endsection

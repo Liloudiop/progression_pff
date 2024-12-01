@@ -33,32 +33,34 @@
 
     </ul>
     
-    <table  style="width: 100%">
+    <table style="width: 100%">
         <thead>
             <th>Nom Complet</th>
-            
             <th>Action</th>
         </thead>
         <tbody>
-            @if($apprenant->count()>0)
-    
-            @foreach ($apprenant as $apprenants)
-            <tr>
-                <td>{{ $apprenants->nom_complet }}</td>
-               
-    
-    
-                <td><a href="/apprenant/show/{{($apprenants->id)}}"><button class="voir plus">Absent</button></a></td>
-               
+            @if($apprenant->count() > 0)
+                @foreach ($apprenant as $apprenants)
+                    <tr>
+                        <td>{{ $apprenants->nom_complet }}</td>
+                        <td>
+                            <!-- Formulaire pour marquer l'élève absent -->
+                            <form action="{{ route('absents.absent', $apprenants->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="absent-btn" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                                    Absent
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
-    
-                @else
-                <td class="post">Aucun apprenant en base de donnee</td>
-                <td></td>
-                    <td></td>
-                @endif
-            </tr>
+            @else
+                <tr>
+                    <td colspan="2" class="post">Aucun apprenant en base de données</td>
+                </tr>
+            @endif
         </tbody>
     </table>
+    
 
     @endsection

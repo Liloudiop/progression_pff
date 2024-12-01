@@ -1,10 +1,21 @@
-<link rel="stylesheet" href="{{asset('css/liste.css')}}">
-<link rel="shortcut icon" href="/images/logo2.png">
+<link rel="stylesheet" href="{{asset('css/apprenantPff.css')}}">
 
 @extends('Formateurs.profil')
 
     @section('conteneur')
     <h2>Page Formateur Planning</h2>
+
+    <div class="container">
+
+        <ul>
+    
+            <form  class="no-print" action="{{route('formateurNew.planningSearch')}}" method="get">
+                <input type="search" name="search" id="search" class="search" placeholder="rechercher un planning..." value="{{isset($search) ? $search : ''}}">
+                <button type="submit" id="btnsearch">Rechercher</button>
+            </form>
+    
+        </ul>
+    </div>
 
 
 <table  style="width: 100%">

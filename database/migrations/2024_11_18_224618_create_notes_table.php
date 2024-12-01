@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentationsTable extends Migration
+class CreateNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDocumentationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documentations', function (Blueprint $table) {
+        Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->string('Nom');
-            $table->string('lien');
+            $table->string('note');
+            $table->foreignId('evaluation_id')->constrained()->onDelete('cascade');
+            $table->foreignId('apprenant_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateDocumentationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documentations');
+        Schema::dropIfExists('notes');
     }
 }

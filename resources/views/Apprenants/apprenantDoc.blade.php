@@ -1,7 +1,22 @@
 @extends('Apprenants.layoutApprenant')
+<link rel="stylesheet" href="{{asset('css/apprenantPff.css')}}">
+
 
     @section('conteneur')
         <h2>Pages Documentation</h2>
+        <div class="container">
+
+            <ul>
+
+        
+                <form  class="no-print" action="{{route('apprenant.docSearch')}}" method="get">
+                    <input type="search" name="search" id="search" class="search" placeholder="rechercher une support..." value="{{isset($search) ? $search : ''}}">
+                    <button type="submit" id="btnsearch">Rechercher</button>
+                </form>
+        
+            </ul>
+        </div>
+
     
         <table  style="width: 100%">
             <thead>

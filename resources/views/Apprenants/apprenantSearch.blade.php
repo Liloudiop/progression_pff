@@ -16,9 +16,9 @@
     </style>
 
 
-{{-- @extends('layout') --}}
+    @extends('layout')
 
-    {{-- @section('content') --}}
+    @section('content')
         <div class="container">
 
     <h2 class="no-print">Voici la resultat du recherche</h2>
@@ -81,7 +81,7 @@
     </tbody>
 </table>
 
-    {{-- @endsection --}}
+
 
 
 
@@ -91,3 +91,5 @@
         window.print();
     }
 </script>
+
+@endsection

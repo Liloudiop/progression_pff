@@ -20,4 +20,8 @@ class Evaluation extends Model
     public function Filiere(){
         return $this->belongsTo(Filiere::class);
     }
+
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
 }

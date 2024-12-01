@@ -14,12 +14,17 @@
 </style>
 
     <title> Systeme de Gestion Scolaire</title>
-<div class="container">
+
+    @extends('layout')
+
+    @section('content')
+
+        <div class="container">
 
     <h2 class="no-print" >Voici la resultat du recherche</h2>
     <ul>
         
-        <li  class="no-print" ><a href="/" class="lien_site">Retourner sur le site</a></li>
+        <li  class="no-print" ><a href="{{route('annees.liste')}}" class="lien_site">Retourner sur la liste</a></li>
         <li class="no-print" ><a href="{{route('annees.create')}}">Ajouter une Année</a></li>
         <li  class="no-print"  class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li>
 
@@ -64,7 +69,7 @@
         @else
             <td></td>
             <td></td>
-            <td class="post">Aucun post en base de donnee</td>
+            <td class="post">Aucun resultat</td>
         @endif
         </tr>
     </tbody>
@@ -78,3 +83,4 @@
     }
 </script>
 
+@endsection

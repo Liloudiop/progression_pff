@@ -12,6 +12,8 @@ use App\Models\ProfileApprenant;
 use App\Models\Documentation;
 use App\Models\Support;
 use App\Models\Annee;
+use App\Models\Salle;
+use App\Models\Absent;
 use App\Models\Planning;
 
 
@@ -21,9 +23,7 @@ class ApprenantController extends Controller
 
     public function index()
     {
-        // $apprenant = Apprenant::all();
-        // $apprenant = Apprenant::with('filiere')->get();
-        // dd($apprenant);
+        
 
         $apprenant = Apprenant::select('apprenants.*', 'apprenants.nom_complet AS nom_complet', 'filieres.name as filiere_name')
           ->join('filieres', 'apprenants.filieres_id', '=', 'filieres.id')
@@ -87,7 +87,7 @@ class ApprenantController extends Controller
 
     public function show($id){
        
-        $apprenant = Apprenant::with('filiere')->find($id); // Récupère l'apprenant avec sa filière
+        $apprenant = Apprenant::find($id); // Récupère l'apprenant avec sa filière
     
         // Vérifiez si l'apprenant existe
         if (!$apprenant) {
@@ -95,7 +95,7 @@ class ApprenantController extends Controller
         }
     
         // dd($apprenant);
-        return view('Apprenants.ApprenantShow', compact('apprenant'));
+        return view('Apprenants.apprenantShow', ['apprenant' => $apprenant]);
       }
     
 
@@ -157,6 +157,29 @@ class ApprenantController extends Controller
           ->get();
         return view('Apprenants.apprenantPff',compact('pff'));
     }
+
+    public function pffsearch(Request $request) {
+        $search = $request->search;
+    
+        $pff = Pff::where(function($query) use ($search){
+                $query->where('nom_theme', 'like', "%$search%")
+                      ->orwhere('files', 'like', "%$search%")
+                      ->orWhere('nom_acteur', 'like', "%$search%");
+            })
+            ->orWhereHas('filiere', function($query) use ($search){
+                $query->where('name', 'like', "%$search%");
+            })
+            ->orWhereHas('annee', function($query) use ($search){
+                $query->where('nom_promotion', 'like', "%$search%");
+            })
+            ->with('filiere') // Charger la relation 'filiere' avec les salles
+            ->with('annee') // Charger la relation 'annee' avec les salles
+            ->get();
+    
+        // dd($salles); // Debug: affiche les résultats pour vérification
+        return view('Apprenants.apprenantpffSearch', compact('pff', 'search'));
+    }
+
     
 
     public function cours()
@@ -168,6 +191,23 @@ class ApprenantController extends Controller
         //   dd($support);
 
         return view('Apprenants.apprenantCours',compact('support'));
+    }
+
+    public function coursSearch(Request $request) {
+        $search = $request->search;
+    
+        $support = Support::where(function($query) use ($search){
+                $query->where('nom_support', 'like', "%$search%")
+                      ->orWhere('files', 'like', "%$search%");
+            })
+            ->orWhereHas('filiere', function($query) use ($search){
+                $query->where('name', 'like', "%$search%");
+            })
+            ->with('filiere') // Charger la relation 'filiere' avec les salles
+            ->get();
+    
+        // dd($salles); // Debug: affiche les résultats pour vérification
+        return view('Apprenants.apprenantcoursSearch', compact('support', 'search'));
     }
 
     public function telechargerCours($id)
@@ -193,11 +233,49 @@ class ApprenantController extends Controller
         return view('Apprenants.apprenantPlanning', compact('plannings'));
     }
 
+    public function planningSearch(Request $request) {
+        $search = $request->search;
+
+        $plannings = Planning::where(function($query) use ($search){
+            $query->where('nom', 'like' ,"%$search%")
+            ->orwhere('files', 'like' ,"%$search%")
+            ->orwhere('departement', 'like' ,"%$search%");
+        })
+    
+        ->orWhereHas('annee', function($query) use ($search){
+        $query->where('nom_promotion', 'like', "%$search%");
+        })
+        ->with('annee') // Charger la relation 'filiere' avec les salles
+        ->get();
+
+        
+
+        // dd($formateurs);
+        return view('Apprenants.apprenantplanningSearch', compact('plannings', 'search'));
+    }
+
     public function documentation()
     {
         $documentation = Documentation::all();
 
         return view('Apprenants.apprenantDoc', compact('documentation'));
+    }
+
+
+
+    public function docSearch(Request $request) {
+        $search = $request->search;
+    
+        $documentation = Documentation::where(function($query) use ($search){
+                $query->where('nom', 'like', "%$search%")
+                      ->orWhere('lien', 'like', "%$search%");
+
+            })
+          
+            ->get();
+    
+        // dd($salles); // Debug: affiche les résultats pour vérification
+        return view('Apprenants.apprenantdocSearch', compact('documentation', 'search'));
     }
 
     public function absence()
@@ -241,4 +319,22 @@ class ApprenantController extends Controller
         // dd($salles); // Debug: affiche les résultats pour vérification
         return view('Apprenants.apprenantSearch', compact('apprenant', 'search'));
     }
+
+
+    public function indexHome()
+    {
+        $salles = Salle::all();
+        // $apprenant = Apprenant::with('filiere')->get();
+        // dd($apprenant);
+
+        $apprenant = Apprenant::select('apprenants.*', 'apprenants.nom_complet AS nom_complet', 'filieres.name as filiere_name')
+          ->join('filieres', 'apprenants.filieres_id', '=', 'filieres.id')
+          ->get();
+
+          return view('acceuil2',compact('apprenant', 'salles'));
+
+       }
+
+
+
 }

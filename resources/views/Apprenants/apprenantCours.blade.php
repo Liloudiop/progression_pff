@@ -1,32 +1,27 @@
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="{{asset('css/apprenantProfil.css')}}">
-        <link rel="stylesheet" href="{{asset('Js/apprenantProfile.js')}}">
         <link rel="stylesheet" href="{{asset('css/apprenantPff.css')}}">
+
 
 
 
 
  @extends('Apprenants.layoutApprenant')
 
-        @section('conteneur')
-{{--        
-<div class="container">
+ @section('conteneur')
+ <h2>Liste des supports de cours</h2>
+        <div class="container">
 
-    <ul>
+            <ul>
         
-        <li ><a style="font-size: 12px; padding:12px;" href="/" class="lien_site">Retourner sur le site</a></li>
-        <li><a style="font-size: 12px; padding:12px;" href="{{route('support.create')}}">Ajouter une Support</a></li>
+                <form  class="no-print" action="{{route('apprenant.coursSearch')}}" method="get">
+                    <input type="search" name="search" id="search" class="search" placeholder="rechercher une support..." value="{{isset($search) ? $search : ''}}">
+                    <button type="submit" id="btnsearch">Rechercher</button>
+                </form>
+        
+            </ul>
+        </div>
 
-        <form  action="{{route('support.search')}}" method="get">
-            <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}">
-            <button type="submit" id="btnsearch">Rechercher</button>
-        </form>
-
-    </ul>
-</div> --}}
-
-    <h2>Liste des supports de cours</h2>
 
 <table  style="width: 100%">
     <thead>

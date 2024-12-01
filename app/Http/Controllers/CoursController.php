@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Cours;
 use App\Models\Filiere;
 use App\Models\Formateur;
-use App\Models\FormateurNew;
 use Illuminate\Http\Request;
 
 class CoursController extends Controller{
@@ -104,14 +103,13 @@ public function editTraitement(Request $request) {
         ->orWhereHas('formateur', function($query) use ($search) {
             $query->where('nom_complet', 'like', "%$search%");
         })
-        ->with(['filiere', 'formateur']) // Charger les relations 'filiere' et 'formateur'
+        ->with(['filiere', 'formateurs']) // Charger les relations 'filiere' et 'formateur'
         ->get();
 
-        $formateurs = Formateur::all();
 
-        dd($formateurs);
+
     
-        dd($cours); // Debug: affiche les résultats pour vérification
+        // dd($cours); // Debug: affiche les résultats pour vérification
         return view('Administrateur.coursSearch', compact('cours', 'search'));
     }
 }

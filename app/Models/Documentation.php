@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Documentation extends Model
 {
     use HasFactory;
+
+    public function Filiere(){
+        return $this->belongsTo(Filiere::class);
+    }
+
 }

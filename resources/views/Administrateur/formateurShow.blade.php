@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="{{asset('css/listeFormateur.css')}}">
+<link rel="stylesheet" href="{{asset('css/liste.css')}}">
 <link rel="shortcut icon" href="/images/logo2.png">
 
 
@@ -14,6 +14,11 @@
 </style>
 
 <title> Systeme de Gestion Scolaire</title>
+
+@extends('layout')
+
+    @section('content')
+
 <div class="container">
 
     <h2 class="no-print" >Les details de cette Formateur</h2>
@@ -67,3 +72,5 @@
         window.print();
     }
 </script>
+
+@endsection

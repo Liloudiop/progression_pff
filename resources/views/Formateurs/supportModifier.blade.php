@@ -1,38 +1,59 @@
-
-<link rel="stylesheet" href="{{asset('css/create.css')}}">
+<link rel="stylesheet" href="{{ asset('Js/formulaire.css') }}">
 <link rel="shortcut icon" href="/images/logo2.png">
+
+<title> Systeme de Gestion Scolaire</title>
+
+
+<link rel="stylesheet" href="{{ asset('css/formulaire.css') }}">
 
 
 @extends('Formateurs.profil')
 
-    @section('conteneur')
-  
+@section('conteneur')
+    <main class="main-content">
 
-    <form action="{{route('support.editTraitement')}}" method="post">
-       <h4>Modifier cette support</h4>
+        <div class="form-tout">
+            <h2>Modifier le support</h2>
 
-      {!! csrf_field() !!}
-      @method("PATCH")
-      <input type="hidden" name="id" id="id" value="{{$support->id}}" id="id" />
-      <label>Nom support</label>
-      <input type="text" name="nom" id="nom" value="{{$support->nom_support}}" >
+            <form class="student-form" action="{{ route('support.editTraitement') }}" method="post">
+                {!! csrf_field() !!}
+                @method('PATCH')
 
-      <label for="files">Files</label>
-      <input type="file" name="files" id="files" required value="{{$support->files}}">
+                <input type="hidden" name="id" id="id" value="{{ $support->id }}" id="id" />
 
-      <label for="salle_filiere_id">Filiere</label>
-      <select name="filiere_id" >
+                <div class="form-group">
+                    <label>Nom support</label>
+                    <input type="text" name="nom" id="nom" value="{{ $support->nom_support }}">
+                </div>
 
-          @foreach ($filieres as $filiere)
-              <option value="{{$filiere->id}}" >{{$filiere->name}}</option>
-          @endforeach
+                <div class="form-group">
+                    <label for="files">Files</label>
+                    <input type="file" name="files" id="files" required value="{{ $support->files }}">
+                </div>
 
-     </select>
-      
+                <div class="form-group">
+                    <label for="salle_filiere_id">Filiere</label>
+                    <select name="filiere_id">
 
-      <input type="submit" value="Valider" >
-      <p class="p">Merci d'apporter des modifications pour cette <br><span>support.</span> </p>
+                        @foreach ($filieres as $filiere)
+                            <option value="{{ $filiere->id }}">{{ $filiere->name }}</option>
+                        @endforeach
 
-  </form>
-  
-    @endsection
+                    </select>
+                </div>
+
+                
+
+
+
+                <button type="submit" class="submit-btn">Modifier</button>
+                <button class="submit-btn" id="annuler"><a href="/support.liste">Annuler</a></button>
+
+            </form>
+        </div>
+    </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Gestion Scolaire. Tous droits réservés.</p>
+    </footer>
+@endsection

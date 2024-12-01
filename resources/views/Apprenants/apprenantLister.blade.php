@@ -5,6 +5,10 @@
     <title> Systeme de Gestion Scolaire</title>
 
 
+    @extends('layout')
+
+    @section('content')
+
     <style>
         /* Styles pour l'impression */
         @media print {
@@ -91,3 +95,5 @@
         window.print();
     }
 </script>
+
+@endsection

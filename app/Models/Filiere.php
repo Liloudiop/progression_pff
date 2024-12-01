@@ -38,5 +38,10 @@ class Filiere extends Model
         return $this->hasMany(Evaluation::class);
     }
 
+    public function Documentation()
+    {
+        return $this->hasMany(Documentation::class);
+    }
+
     
 }

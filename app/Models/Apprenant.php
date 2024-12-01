@@ -15,4 +15,11 @@ class Apprenant extends Model
         return $this->belongsTo(Filiere::class, 'filiere_id');
     }
 
+    public function notes(){
+
+        return $this->hasMany(Note::class);
+    }
+
+   
+
 }

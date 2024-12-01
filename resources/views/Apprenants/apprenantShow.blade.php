@@ -23,7 +23,7 @@
         
     </thead>
     <tbody>
-        @if($apprenant->count()>0)
+        {{-- @if($apprenant->count()>0) --}}
 
         @foreach ($apprenant as $apprenants)
         <tr>
@@ -50,11 +50,11 @@
 
             @endforeach
 
-            @else
+            {{-- @else
                 <td></td>
                 <td></td>
                 <td class="post">Aucun post en base de donnee</td>
-            @endif
+            @endif --}}
         </tr>
     </tbody>
 </table>

@@ -3,7 +3,12 @@
 <link rel="shortcut icon" href="/images/logo2.png">
 
     <title> Systeme de Gestion Scolaire</title>
-<div class="container">
+
+    @extends('layout')
+
+    @section('content')
+
+        <div class="container">
 
     <h2>Voici la resultat du recherche</h2>
     <ul>
@@ -60,4 +65,5 @@
 
 
 
+@endsection
 

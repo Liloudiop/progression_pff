@@ -14,6 +14,12 @@
 </style>
 
     <title  class="no-print" > Systeme de Gestion Scolaire</title>
+
+
+    @extends('layout')
+
+    @section('content')
+    
 <div class="container">
 
     <h2  class="no-print" >Voici la liste des Cours</h2>
@@ -84,3 +90,4 @@
     }
 </script>
 
+@endsection

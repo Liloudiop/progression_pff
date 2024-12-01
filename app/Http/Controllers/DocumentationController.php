@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 use App\Models\Documentation;
-
+use App\Models\Filiere;
 use Illuminate\Http\Request;
 
 class DocumentationController extends Controller
 {
     //
-
     public function index()
     {
-        $documentation = Documentation::all();
+        $documentation = Documentation::select('documentations.*', 'filieres.name as filiere_name')
+        ->join('filieres', 'filiere_id', '=', 'filieres.id')
+
+        ->get();
+
         // dd($documentation);
         return view('Formateurs.documentation',compact('documentation'));
     }
@@ -23,7 +26,8 @@ class DocumentationController extends Controller
     {
 
         $documentation = Documentation::all();
-        return view('Formateurs.documentAjout', compact('documentation'));
+        $filieres = Filiere::all();
+        return view('Formateurs.documentAjout', compact('filieres'));
     }
 
     /**
@@ -37,6 +41,8 @@ class DocumentationController extends Controller
             
             $documentation->nom = $request->input('nom');
             $documentation->lien = $request->input('lien');
+            $documentation->filiere_id = $request->input('filiere_id');
+
 
             
             $documentation ->save();
@@ -49,7 +55,9 @@ class DocumentationController extends Controller
     public function edit($id)
     {
         $documentation = Documentation::find($id);
-        return view('Formateurs.documentModifier',['documentation' => $documentation]);
+        $filieres = Filiere::all();
+
+        return view('Formateurs.documentModifier',compact('documentation','filieres'));
     }
 
     
@@ -62,6 +70,8 @@ class DocumentationController extends Controller
             
         $documentation->nom = $request->input('nom');
         $documentation->lien = $request->input('lien');
+        $documentation->filiere_id = $request->input('filiere_id');
+
 
         
             $documentation ->update();
@@ -86,9 +96,16 @@ class DocumentationController extends Controller
                     $query->where('Nom', 'like', "%$search%")
                           ->orWhere('lien', 'like', "%$search%");
                 })
+                ->orWhereHas('filiere', function($query) use ($search){
+                    $query->where('name', 'like', "%$search%");
+                })
+                ->with('filiere') // Charger la relation 'filiere' avec les salles
                 ->get();
+
+
         
             return view('Formateurs.documentationSearch', compact('documentation', 'search'));
         }
+
 
 }

@@ -1,29 +1,52 @@
-<link rel="stylesheet" href="{{asset('css/create.css')}}">
-<link rel="stylesheet" href="{{asset('Js/form.css')}}">
+
+<link rel="stylesheet" href="{{asset('Js/formulaire.css')}}">
 <link rel="shortcut icon" href="/images/logo2.png">
 
     <title> Systeme de Gestion Scolaire</title>
 
 
-    <form action="/filieres.store1" method="post">
+    <link rel="stylesheet" href="{{ asset('css/formulaire.css') }}">
+
+
+@extends('layout')
+
+@section('content')
+    <main class="main-content">
+
+        <div class="form-tout">
+            <h2>Ajouter Filiere</h2>
+
+            <form class="student-form" action="/filieres.store1" method="post">
         @csrf
-    <h4>Ajouter Filiere</h4>
-        <hr>
 
-        <label for="nom">Nom</label>
-        <input type="text" name="nom" id="nom" required> 
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" id="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description" required>
+                </div>
+                <div class="form-group">
+                    <label for="departement">Departement</label>
+                    <select name="departement" id="departement">
+                        <option value="TIC">TIC</option>
+                        <option value="Automobile">Automobile</option>
 
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description" required>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">Ajouter</button>
+                <button class="submit-btn" id="annuler"><a href="filieres.liste">Annuler</a></button>
 
-        <label for="departement">Departement</label>
-        <select name="departement" id="departement">
-            <option value="TIC">TIC</option>
-            <option value="Automobile">Automobile</option>
+            </form>
+        </div>
+    </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Gestion Scolaire. Tous droits réservés.</p>
+    </footer>
+@endsection
 
-        </select>
-        <input type="submit" value="Valider">
 
-        {{-- <p class="p">Vous avez deja un compte ? <a href="/pages/login">se connecter</a></p> --}}
-        <p class="p">Merci de remplir tous les champs  pour ajouter <span>un filiere.</span> </p>
-    </form>
+

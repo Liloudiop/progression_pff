@@ -13,8 +13,8 @@
 
         <ul>
             
-            <li ><a style="font-size: 12px; padding:12px;" href="/" class="lien_site">Retourner sur le site</a></li>
-            <li><a style="font-size: 12px; padding:12px;" href="{{route('support.create')}}">Ajouter une Support</a></li>
+            <li ><a  href="{{route('support.liste')}}" class="lien_site">Retourner sur la liste</a></li>
+            <li><a  href="{{route('support.create')}}">Ajouter une Support</a></li>
     
             <form  action="{{route('support.search')}}" method="get">
                 <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}">

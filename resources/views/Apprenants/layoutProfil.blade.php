@@ -8,7 +8,7 @@
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
                     <a href="formateurNew.settings"><img  class="nav__toggle" id="nav-toggle" style="border-radius: 40%; width:110px ;" src="/images/13.jpg" alt="photo"></a>
                     
-                    {{-- <a href="#" class="nav__logo">{{$apprenants->nom_complet}}</a> --}}
+                    {{-- <a  href="#" class="nav__logo">{{$apprenants->nom_complet}}</a> --}}
                 </div>
                 <div class="nav__list">
                     <a href="#" class="nav__link active">

@@ -14,12 +14,17 @@
 
 
     <title  class="no-print"> Systeme de Gestion Scolaire</title>
-<div class="container">
+
+    @extends('layout')
+
+    @section('content')
+
+        <div class="container">
 
     <h2 class="no-print" >Voici la resultat du recherche</h2>
     <ul>
         
-        <li class="no-print" ><a href="/" class="lien_site">Retourner sur le site</a></li>
+        <li class="no-print" ><a href="{{route('formateursNew.lister')}}" class="lien_site">Retourner sur la liste</a></li>
         <li class="no-print"><a href="{{route('formateursNew.create')}}">Ajouter un Formateur</a></li>
         <li class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li>
         <form class="no-print" action="{{route('formateursNew.search')}}" method="get">
@@ -79,3 +84,6 @@
         window.print();
     }
 </script>
+
+
+@endsection

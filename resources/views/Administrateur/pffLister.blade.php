@@ -14,7 +14,12 @@
 </style>
 
     <title class="no-print"> Systeme de Gestion Scolaire</title>
-<div class="container">
+
+    @extends('layout')
+
+    @section('content')
+
+        <div class="container">
 
     <h2 class="no-print" >Voici la liste des Projet de fin d'etudes</h2>
     <ul>
@@ -81,3 +86,5 @@
         window.print();
     }
 </script>
+
+@endsection

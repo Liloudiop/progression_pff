@@ -12,8 +12,8 @@
 
     <ul>
         
-        <li ><a style="font-size: 12px; padding:12px;" href="/" class="lien_site">Retourner sur le site</a></li>
-        <li><a style="font-size: 12px; padding:12px;" href="{{route('documentation.create')}}">Ajouter une documentation</a></li>
+        <li ><a  href="{{route('documentation.liste')}}" class="lien_site">Retourner sur la liste</a></li>
+        <li><a  href="{{route('documentation.create')}}">Ajouter une documentation</a></li>
 
         <form  action="{{route('documentation.search')}}" method="get">
             <input type="search" name="search" id="search" class="search" placeholder="rechercher " value="{{isset($search) ? $search : ''}}">
@@ -27,6 +27,7 @@
     <thead>
         <th>Nom </th>
         <th>Lien</th>
+        <th>Filiere</th>
         <th>date</th>
         <th colspan="2">Action</th>
     </thead>
@@ -40,8 +41,9 @@
         @foreach ($documentation as $documentations)
         <tr>
             <td>{{ $documentations->Nom}}</td>
-            <td>{{ $documentations->lien }}</td>
-            <td>{{ $documentations->created_at }}</td>
+            <td><a href="{{ $documentations->lien }}" target="_blank">{{ $documentations->lien }}</a></td>
+            <td>{{ $documentations->filiere_name }}</td>
+            <td>{{ \Carbon\Carbon::parse($documentations->created_at)->translatedFormat('d F Y') }} </td>
             
 
 

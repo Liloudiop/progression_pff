@@ -139,6 +139,24 @@ class FormateurController extends Controller
         return view('Formateurs.planning', compact('plannings'));
     }
 
+    public function planningSearch(Request $request) {
+        $search = $request->search;
+
+        $plannings = Planning::where(function($query) use ($search){
+            $query->where('nom', 'like' ,"%$search%")
+            ->orwhere('files', 'like' ,"%$search%")
+            ->orwhere('departement', 'like' ,"%$search%");
+        })
+        ->orWhereHas('annee', function($query) use ($search){
+            $query->where('nom_promotion', 'like', "%$search%");
+        })
+        ->with('annee')
+        ->get(); // Charger la relation 'filiere' avec les salles->get();
+
+        
+        return view('Formateurs.planningSearch', compact('plannings', 'search'));
+    }
+
     public function documentation()
     {
 

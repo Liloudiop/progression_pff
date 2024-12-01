@@ -21,8 +21,8 @@
 
     <ul>
         
-        <li  class="no-print"  ><a style="font-size: 12px; padding:12px;" href="/" class="lien_site">Retourner sur le site</a></li>
-        <li class="no-print"   ><a style="font-size: 12px; padding:12px;" href="{{route('documentation.create')}}">Ajouter une documentation</a></li>
+        <li  class="no-print"  ><a  href="/" class="lien_site">Retourner sur le site</a></li>
+        <li class="no-print"   ><a  href="{{route('documentation.create')}}">Ajouter une documentation</a></li>
         <li  class="no-print"   class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li>
 
 
@@ -38,6 +38,7 @@
     <thead>
         <th>Nom </th>
         <th>Lien</th>
+        <th>Filiere</th>
         <th>date</th>
         <th  class="no-print"  colspan="2">Action</th>
     </thead>
@@ -54,7 +55,8 @@
             <td><a href="{{ $documentations->lien }}" target="_blank">{{ $documentations->lien }}</a></td>
 
 
-            {{-- <td >{{ $documentations->lien }}</td> --}}
+            <td>{{ $documentations->filiere_name }}</td>
+
             <td>{{ \Carbon\Carbon::parse($documentations->created_at)->translatedFormat('d F Y') }}</td>
             
             

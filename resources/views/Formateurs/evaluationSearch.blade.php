@@ -22,7 +22,8 @@
 
     <h2  class="no-print" >Voici le resultat de cette recherche</h2>
     <ul>
-        
+        <li  class="no-print" ><a href="{{route('formateurNew.note')}}" class="lien_site">Ajouter note</a></li>
+        <li class="no-print" ><a href="{{route('evaluations.liste')}}">Retourner sur la liste</a></li>
         <li class="no-print" ><a href="{{route('evaluations.create')}}">Ajouter un Evaluation</a></li>
         <li  class="no-print" class="no-print"><a href="" onclick="imprimerPage()" >Imprimer</a></li>
 
